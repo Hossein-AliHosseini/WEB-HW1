@@ -7,30 +7,31 @@ body {
     padding: 0;
     background-color: #f9f9f9;
     color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1 {
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 20px;
-    font-size: 2.5rem;
+.formula-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
 }
 
-h2 {
-    color: #34495e;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+.formula-column {
+    flex: 1;
+    min-width: 300px;
+    max-width: 48%;
 }
 
-/* Formula Container */
 .formula-container {
     background-color: #ffffff;
     padding: 20px;
-    margin: 20px auto;
+    margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .formula-container:hover {
@@ -38,7 +39,6 @@ h2 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Input Fields */
 input {
     width: calc(100% - 20px);
     padding: 10px;
@@ -68,29 +68,25 @@ output {
     text-align: center;
 }
 
-/* Pagination */
-.pagination {
-    text-align: center;
-    margin: 30px 0;
-}
-
-.pagination a {
-    text-decoration: none;
-    color: #3498db;
-    padding: 10px 20px;
-    border: 2px solid #3498db;
+.formula-tooltip {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
     border-radius: 5px;
-    margin: 0 10px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    z-index: 10;
 }
 
-.pagination a:hover {
-    background-color: #3498db;
-    color: white;
+.formula-container:hover .formula-tooltip {
+    display: block;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -100,17 +96,19 @@ output {
         font-size: 1.5rem;
     }
 
+    .formula-grid {
+        flex-direction: column;
+    }
+
+    .formula-column {
+        max-width: 100%;
+    }
+
     .formula-container {
         padding: 15px;
-        margin: 15px;
     }
 
     input, output {
-        font-size: 0.9rem;
-    }
-
-    .pagination a {
-        padding: 8px 16px;
         font-size: 0.9rem;
     }
 }
@@ -126,15 +124,9 @@ output {
 
     .formula-container {
         padding: 10px;
-        margin: 10px;
     }
 
     input, output {
-        font-size: 0.8rem;
-    }
-
-    .pagination a {
-        padding: 6px 12px;
         font-size: 0.8rem;
     }
 }

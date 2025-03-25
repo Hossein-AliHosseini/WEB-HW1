@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرمول‌های محاسباتی</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Two-column layout -->
+    <div class="formula-grid">
+        <!-- Left Column -->
+        <div class="formula-column">
+            <h1>فرمول‌های نمونه</h1>
+            <!-- Formula 1: Total Cost -->
+            <div class="formula-container">
+                <h2>محاسبه هزینه کل</h2>
+                <input type="text" id="fee" placeholder="قیمت واحد">
+                <input type="text" id="count" placeholder="تعداد">
+                <input type="text" id="discount" placeholder="تخفیف">
+                <formula evaluator="count*fee-discount"></formula>
+                <output id="result1" readonly></output>
+                <span class="formula-tooltip">فرمول: هزینه کل = تعداد × قیمت واحد - تخفیف</span>
+            </div>
+
+            <!-- Formula 2: Profit -->
+            <div class="formula-container">
+                <h2>محاسبه سود</h2>
+                <input type="text" id="fee2" placeholder="قیمت واحد">
+                <input type="text" id="count2" placeholder="تعداد">
+                <input type="text" id="cost_price2" placeholder="قیمت تمام شده">
+                <input type="text" id="discount2" placeholder="تخفیف">
+                <formula evaluator="count2*fee2-count2*cost_price2-discount2"></formula>
+                <output id="result2" readonly></output>
+                <span class="formula-tooltip">فرمول: سود = (تعداد × قیمت واحد) - (تعداد × قیمت تمام شده) - تخفیف</span>
+            </div>
+
+            <!-- Formula 3: Tax -->
+            <div class="formula-container">
+                <h2>محاسبه مالیات</h2>
+                <input type="text" id="fee3" placeholder="قیمت واحد">
+                <input type="text" id="count3" placeholder="تعداد">
+                <input type="text" id="tax_rate3" placeholder="نرخ مالیات">
+                <formula evaluator="count3*fee3*tax_rate3"></formula>
+                <output id="result3" readonly></output>
+                <span class="formula-tooltip">فرمول: مالیات = تعداد × قیمت واحد × نرخ مالیات</span>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="formula-column">
+            <h1>فرمول‌های معروف ریاضی و فیزیک</h1>
+
+            <!-- Formula 4: Kinetic Energy -->
+            <div class="formula-container">
+                <h2>انرژی جنبشی</h2>
+                <input type="text" id="mass" placeholder="m (جرم)">
+                <input type="text" id="velocity" placeholder="v (سرعت)">
+                <!-- Avoid evaluating negative inputs. -->
+                <formula evaluator="0.5 * Math.sqrt(mass)*Math.sqrt(mass) * velocity * velocity"></formula>
+                <output id="result4" readonly></output>
+                <span class="formula-tooltip">فرمول: انرژی جنبشی = ½ × جرم × سرعت²</span>
+            </div>
+
+            <!-- Formula 5: Pythagorean Theorem -->
+            <div class="formula-container">
+                <h2>قضیه فیثاغورث</h2>
+                <input type="text" id="sideA" placeholder="a (ضلع اول)">
+                <input type="text" id="sideB" placeholder="b (ضلع دوم)">
+                <!-- Avoid evaluating negative inputs. -->
+                <formula evaluator="Math.sqrt(Math.sqrt(sideA)*Math.sqrt(sideA)*sideA + Math.sqrt(sideB)*Math.sqrt(sideB)*sideB)"></formula> 
+                <output id="result5" readonly></output>
+                <span class="formula-tooltip">فرمول: c = √(a² + b²)</span>
+            </div>
+
+            <!-- Formula 6: Area of a Circle -->
+            <div class="formula-container">
+                <h2>مساحت دایره</h2>
+                <input type="text" id="radius" placeholder="r (شعاع)">
+                <!-- Avoid evaluating negative inputs. -->
+                <formula evaluator="Math.PI * Math.sqrt(radius)*Math.sqrt(radius) * radius"></formula>
+                <output id="result6" readonly></output>
+                <span class="formula-tooltip">فرمول: مساحت = π × شعاع²</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
